@@ -1,0 +1,57 @@
+{
+    "name": "electron-app",
+    "version": "1.0.0",
+    "description": "",
+    "main": "public/electron.js",
+    "scripts": {
+        "react-start": "react-scripts start",
+        "react-build": "react-scripts build",
+        "test": "react-scripts test",
+        "eject": "react-scripts eject",
+        "start": "tsc ./public/electron.ts && concurrently \"cross-env BROWSER=none npm run react-start\" \"wait-on http://localhost:3000 && electron .\"",
+        "build": "npm run react-build && electron-builder",
+        "release": "npm run react-build && electron-builder --publish=always"
+    },
+    "build": {
+        "appId": "com.example.electron-app",
+        "files": [
+            "build/**/*",
+            "node_modules/**/*"
+        ],
+        "directories": {
+            "buildResources": "assets"
+        }
+    },
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "concurrently": "^5.3.0",
+        "electron": "^20.0.0",
+        "electron-builder": "^23.3.3",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "react-scripts": "^5.0.1",
+        "wait-on": "^5.2.1"
+    },
+    "homepage": "./",
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    },
+    "dependencies": {
+        "@types/react": "^18.0.18",
+        "@types/react-dom": "^18.0.6",
+        "cross-env": "^7.0.3",
+        "electron-is-dev": "^2.0.0",
+        "ts-node": "^10.9.1",
+        "typescript": "^4.8.2"
+    }
+}
